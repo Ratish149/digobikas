@@ -1,0 +1,18 @@
+[
+  {
+    "author_id": 1,
+    "author_login": "digoadmin",
+    "author_email": "abhishek.shrestha@digobikas.org",
+    "author_display_name": "digoadmin",
+    "author_first_name": null,
+    "author_last_name": null
+  },
+  {
+    "author_id": 2,
+    "author_login": "bibek",
+    "author_email": "pokharel.bibek@gmail.com",
+    "author_display_name": "ContentAdmin",
+    "author_first_name": "Content",
+    "author_last_name": "Admin"
+  }
+]

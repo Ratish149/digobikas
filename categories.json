@@ -1,0 +1,50 @@
+[
+  {
+    "term_id": 7,
+    "slug": "blog",
+    "parent": null,
+    "name": "Blog"
+  },
+  {
+    "term_id": 52,
+    "slug": "eoi",
+    "parent": null,
+    "name": "EOI"
+  },
+  {
+    "term_id": 8,
+    "slug": "fund-raising",
+    "parent": null,
+    "name": "Fund raising"
+  },
+  {
+    "term_id": 6,
+    "slug": "news",
+    "parent": null,
+    "name": "News"
+  },
+  {
+    "term_id": 17,
+    "slug": "openings",
+    "parent": null,
+    "name": "Openings"
+  },
+  {
+    "term_id": 9,
+    "slug": "opinion",
+    "parent": null,
+    "name": "Opinion"
+  },
+  {
+    "term_id": 10,
+    "slug": "publication",
+    "parent": null,
+    "name": "Publication"
+  },
+  {
+    "term_id": 1,
+    "slug": "uncategorized",
+    "parent": null,
+    "name": "Uncategorized"
+  }
+]

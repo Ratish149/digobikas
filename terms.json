@@ -1,0 +1,410 @@
+[
+  {
+    "term_id": 5,
+    "taxonomy": "team-category",
+    "slug": "abhishek-shrestha",
+    "parent": null,
+    "name": "Abhishek Shrestha",
+    "description": "ABHISHEK SHRESTHA is a Young Climate activist from Nepal passionate about youth, Climate policy, development, Sustainability and governance. He is Climate Reality Leader trained by Al Gore. He holds masters in Climate Change and Policy from University of Sussex, UK and awarded with Chevening Scholarships by UK Government to pursue his Masters. He was elected to serve as YOUNGO focal point 2012-13 (YOUNGO- Youth Constituency at UNFCCC) at COP 18- Doha and interim focal point at COP -17 Durban to ensure positive and constructive participation of the international youth in the UNFCCC official process. He has been attending and following UN climate negotiation since COP 15, Copenhagen 2009 and working with diverse national and international climate groups since 2008.\n\nHe is a Co-founder for Nepalese Youth for Climate Action and played instrumental role in building youth climate movement in Nepal and in South Asia. He was awarded with British Council International Climate Champion. He served as a member of the US Embassy Youth Advisory council also served as steering committee member for the council. He is a debate trainer, coach and Judge trained by International Debate Education Association.\n\nHe was the member of the Support team for Peoples Climate March in 2014 and helped different groups in South Asia and Africa to Organize the March. He was one of the lead for Peoples Climate March Kathmandu 2014. He wants to work and collaborate with the young leaders and work with the ‘new generation’ of change makers for prosperous Nepal."
+  },
+  {
+    "term_id": 42,
+    "taxonomy": "post_tag",
+    "slug": "activism",
+    "parent": null,
+    "name": "activism",
+    "description": ""
+  },
+  {
+    "term_id": 20,
+    "taxonomy": "post_tag",
+    "slug": "activist",
+    "parent": null,
+    "name": "activist",
+    "description": ""
+  },
+  {
+    "term_id": 34,
+    "taxonomy": "post_tag",
+    "slug": "bandipur",
+    "parent": null,
+    "name": "bandipur",
+    "description": ""
+  },
+  {
+    "term_id": 27,
+    "taxonomy": "post_tag",
+    "slug": "bicycle",
+    "parent": null,
+    "name": "bicycle",
+    "description": ""
+  },
+  {
+    "term_id": 7,
+    "taxonomy": "category",
+    "slug": "blog",
+    "parent": null,
+    "name": "Blog",
+    "description": ""
+  },
+  {
+    "term_id": 18,
+    "taxonomy": "team-category",
+    "slug": "board-member",
+    "parent": null,
+    "name": "Board Member",
+    "description": ""
+  },
+  {
+    "term_id": 31,
+    "taxonomy": "post_tag",
+    "slug": "car-free-cities",
+    "parent": null,
+    "name": "car free cities",
+    "description": ""
+  },
+  {
+    "term_id": 36,
+    "taxonomy": "post_tag",
+    "slug": "carfee",
+    "parent": null,
+    "name": "carfee",
+    "description": ""
+  },
+  {
+    "term_id": 33,
+    "taxonomy": "post_tag",
+    "slug": "climate-change",
+    "parent": null,
+    "name": "climate change",
+    "description": ""
+  },
+  {
+    "term_id": 41,
+    "taxonomy": "post_tag",
+    "slug": "climate-emergency",
+    "parent": null,
+    "name": "climate emergency",
+    "description": ""
+  },
+  {
+    "term_id": 22,
+    "taxonomy": "post_tag",
+    "slug": "climate-finance",
+    "parent": null,
+    "name": "climate finance",
+    "description": ""
+  },
+  {
+    "term_id": 40,
+    "taxonomy": "post_tag",
+    "slug": "climate-justice",
+    "parent": null,
+    "name": "climate justice",
+    "description": ""
+  },
+  {
+    "term_id": 15,
+    "taxonomy": "post_tag",
+    "slug": "climate-smart-agriculture",
+    "parent": null,
+    "name": "Climate Smart Agriculture",
+    "description": ""
+  },
+  {
+    "term_id": 16,
+    "taxonomy": "post_tag",
+    "slug": "climate-strike",
+    "parent": null,
+    "name": "Climate Strike",
+    "description": ""
+  },
+  {
+    "term_id": 29,
+    "taxonomy": "post_tag",
+    "slug": "conservation",
+    "parent": null,
+    "name": "conservation",
+    "description": ""
+  },
+  {
+    "term_id": 46,
+    "taxonomy": "post_tag",
+    "slug": "covid19",
+    "parent": null,
+    "name": "Covid19",
+    "description": ""
+  },
+  {
+    "term_id": 44,
+    "taxonomy": "post_tag",
+    "slug": "electric-rickshaw",
+    "parent": null,
+    "name": "electric rickshaw",
+    "description": ""
+  },
+  {
+    "term_id": 52,
+    "taxonomy": "category",
+    "slug": "eoi",
+    "parent": null,
+    "name": "EOI",
+    "description": ""
+  },
+  {
+    "term_id": 39,
+    "taxonomy": "post_tag",
+    "slug": "extraction",
+    "parent": null,
+    "name": "extraction",
+    "description": ""
+  },
+  {
+    "term_id": 38,
+    "taxonomy": "post_tag",
+    "slug": "fossil-free",
+    "parent": null,
+    "name": "fossil free",
+    "description": ""
+  },
+  {
+    "term_id": 37,
+    "taxonomy": "post_tag",
+    "slug": "fossil-fuel",
+    "parent": null,
+    "name": "fossil fuel",
+    "description": ""
+  },
+  {
+    "term_id": 8,
+    "taxonomy": "category",
+    "slug": "fund-raising",
+    "parent": null,
+    "name": "Fund raising",
+    "description": ""
+  },
+  {
+    "term_id": 14,
+    "taxonomy": "post_tag",
+    "slug": "grassroot-climate-solution",
+    "parent": null,
+    "name": "Grassroot Climate Solution",
+    "description": ""
+  },
+  {
+    "term_id": 51,
+    "taxonomy": "post_tag",
+    "slug": "green-climate-fund",
+    "parent": null,
+    "name": "green climate fund",
+    "description": ""
+  },
+  {
+    "term_id": 49,
+    "taxonomy": "post_tag",
+    "slug": "inequality",
+    "parent": null,
+    "name": "inequality",
+    "description": ""
+  },
+  {
+    "term_id": 30,
+    "taxonomy": "post_tag",
+    "slug": "litigation",
+    "parent": null,
+    "name": "litigation",
+    "description": ""
+  },
+  {
+    "term_id": 48,
+    "taxonomy": "post_tag",
+    "slug": "livable-cities",
+    "parent": null,
+    "name": "livable cities",
+    "description": ""
+  },
+  {
+    "term_id": 25,
+    "taxonomy": "post_tag",
+    "slug": "local-government",
+    "parent": null,
+    "name": "local government",
+    "description": ""
+  },
+  {
+    "term_id": 3,
+    "taxonomy": "nav_menu",
+    "slug": "main_menu_db",
+    "parent": "",
+    "name": "Main_Menu_DB",
+    "description": ""
+  },
+  {
+    "term_id": 24,
+    "taxonomy": "post_tag",
+    "slug": "nepal",
+    "parent": null,
+    "name": "nepal",
+    "description": ""
+  },
+  {
+    "term_id": 23,
+    "taxonomy": "post_tag",
+    "slug": "nepal-oil-drilling",
+    "parent": null,
+    "name": "nepal oil drilling",
+    "description": ""
+  },
+  {
+    "term_id": 21,
+    "taxonomy": "post_tag",
+    "slug": "nepali",
+    "parent": null,
+    "name": "nepali",
+    "description": ""
+  },
+  {
+    "term_id": 6,
+    "taxonomy": "category",
+    "slug": "news",
+    "parent": null,
+    "name": "News",
+    "description": ""
+  },
+  {
+    "term_id": 28,
+    "taxonomy": "post_tag",
+    "slug": "nijgadh-airport",
+    "parent": null,
+    "name": "nijgadh airport",
+    "description": ""
+  },
+  {
+    "term_id": 17,
+    "taxonomy": "category",
+    "slug": "openings",
+    "parent": null,
+    "name": "Openings",
+    "description": ""
+  },
+  {
+    "term_id": 9,
+    "taxonomy": "category",
+    "slug": "opinion",
+    "parent": null,
+    "name": "Opinion",
+    "description": ""
+  },
+  {
+    "term_id": 11,
+    "taxonomy": "post_format",
+    "slug": "post-format-aside",
+    "parent": null,
+    "name": "post-format-aside",
+    "description": ""
+  },
+  {
+    "term_id": 4,
+    "taxonomy": "post_format",
+    "slug": "post-format-chat",
+    "parent": null,
+    "name": "post-format-chat",
+    "description": ""
+  },
+  {
+    "term_id": 12,
+    "taxonomy": "post_format",
+    "slug": "post-format-image",
+    "parent": null,
+    "name": "post-format-image",
+    "description": ""
+  },
+  {
+    "term_id": 13,
+    "taxonomy": "post_format",
+    "slug": "post-format-link",
+    "parent": null,
+    "name": "post-format-link",
+    "description": ""
+  },
+  {
+    "term_id": 26,
+    "taxonomy": "post_tag",
+    "slug": "province-1",
+    "parent": null,
+    "name": "province 1",
+    "description": ""
+  },
+  {
+    "term_id": 10,
+    "taxonomy": "category",
+    "slug": "publication",
+    "parent": null,
+    "name": "Publication",
+    "description": ""
+  },
+  {
+    "term_id": 43,
+    "taxonomy": "post_tag",
+    "slug": "rickshaw",
+    "parent": null,
+    "name": "rickshaw",
+    "description": ""
+  },
+  {
+    "term_id": 45,
+    "taxonomy": "post_tag",
+    "slug": "sustainability",
+    "parent": null,
+    "name": "sustainability",
+    "description": ""
+  },
+  {
+    "term_id": 1,
+    "taxonomy": "category",
+    "slug": "uncategorized",
+    "parent": null,
+    "name": "Uncategorized",
+    "description": ""
+  },
+  {
+    "term_id": 32,
+    "taxonomy": "post_tag",
+    "slug": "urban-mibility",
+    "parent": null,
+    "name": "urban mibility",
+    "description": ""
+  },
+  {
+    "term_id": 35,
+    "taxonomy": "post_tag",
+    "slug": "urban-mobility",
+    "parent": null,
+    "name": "urban mobility",
+    "description": ""
+  },
+  {
+    "term_id": 47,
+    "taxonomy": "post_tag",
+    "slug": "world-bicycle-forum",
+    "parent": null,
+    "name": "world bicycle forum",
+    "description": ""
+  },
+  {
+    "term_id": 50,
+    "taxonomy": "post_tag",
+    "slug": "world-economic-forum",
+    "parent": null,
+    "name": "World Economic Forum",
+    "description": ""
+  },
+  {
+    "term_id": 19,
+    "taxonomy": "post_tag",
+    "slug": "youth",
+    "parent": null,
+    "name": "youth",
+    "description": ""
+  }
+]

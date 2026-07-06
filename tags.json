@@ -1,0 +1,182 @@
+[
+  {
+    "term_id": 42,
+    "slug": "activism",
+    "name": "activism"
+  },
+  {
+    "term_id": 20,
+    "slug": "activist",
+    "name": "activist"
+  },
+  {
+    "term_id": 34,
+    "slug": "bandipur",
+    "name": "bandipur"
+  },
+  {
+    "term_id": 27,
+    "slug": "bicycle",
+    "name": "bicycle"
+  },
+  {
+    "term_id": 31,
+    "slug": "car-free-cities",
+    "name": "car free cities"
+  },
+  {
+    "term_id": 36,
+    "slug": "carfee",
+    "name": "carfee"
+  },
+  {
+    "term_id": 33,
+    "slug": "climate-change",
+    "name": "climate change"
+  },
+  {
+    "term_id": 41,
+    "slug": "climate-emergency",
+    "name": "climate emergency"
+  },
+  {
+    "term_id": 22,
+    "slug": "climate-finance",
+    "name": "climate finance"
+  },
+  {
+    "term_id": 40,
+    "slug": "climate-justice",
+    "name": "climate justice"
+  },
+  {
+    "term_id": 15,
+    "slug": "climate-smart-agriculture",
+    "name": "Climate Smart Agriculture"
+  },
+  {
+    "term_id": 16,
+    "slug": "climate-strike",
+    "name": "Climate Strike"
+  },
+  {
+    "term_id": 29,
+    "slug": "conservation",
+    "name": "conservation"
+  },
+  {
+    "term_id": 46,
+    "slug": "covid19",
+    "name": "Covid19"
+  },
+  {
+    "term_id": 44,
+    "slug": "electric-rickshaw",
+    "name": "electric rickshaw"
+  },
+  {
+    "term_id": 39,
+    "slug": "extraction",
+    "name": "extraction"
+  },
+  {
+    "term_id": 38,
+    "slug": "fossil-free",
+    "name": "fossil free"
+  },
+  {
+    "term_id": 37,
+    "slug": "fossil-fuel",
+    "name": "fossil fuel"
+  },
+  {
+    "term_id": 14,
+    "slug": "grassroot-climate-solution",
+    "name": "Grassroot Climate Solution"
+  },
+  {
+    "term_id": 51,
+    "slug": "green-climate-fund",
+    "name": "green climate fund"
+  },
+  {
+    "term_id": 49,
+    "slug": "inequality",
+    "name": "inequality"
+  },
+  {
+    "term_id": 30,
+    "slug": "litigation",
+    "name": "litigation"
+  },
+  {
+    "term_id": 48,
+    "slug": "livable-cities",
+    "name": "livable cities"
+  },
+  {
+    "term_id": 25,
+    "slug": "local-government",
+    "name": "local government"
+  },
+  {
+    "term_id": 24,
+    "slug": "nepal",
+    "name": "nepal"
+  },
+  {
+    "term_id": 23,
+    "slug": "nepal-oil-drilling",
+    "name": "nepal oil drilling"
+  },
+  {
+    "term_id": 21,
+    "slug": "nepali",
+    "name": "nepali"
+  },
+  {
+    "term_id": 28,
+    "slug": "nijgadh-airport",
+    "name": "nijgadh airport"
+  },
+  {
+    "term_id": 26,
+    "slug": "province-1",
+    "name": "province 1"
+  },
+  {
+    "term_id": 43,
+    "slug": "rickshaw",
+    "name": "rickshaw"
+  },
+  {
+    "term_id": 45,
+    "slug": "sustainability",
+    "name": "sustainability"
+  },
+  {
+    "term_id": 32,
+    "slug": "urban-mibility",
+    "name": "urban mibility"
+  },
+  {
+    "term_id": 35,
+    "slug": "urban-mobility",
+    "name": "urban mobility"
+  },
+  {
+    "term_id": 47,
+    "slug": "world-bicycle-forum",
+    "name": "world bicycle forum"
+  },
+  {
+    "term_id": 50,
+    "slug": "world-economic-forum",
+    "name": "World Economic Forum"
+  },
+  {
+    "term_id": 19,
+    "slug": "youth",
+    "name": "youth"
+  }
+]
