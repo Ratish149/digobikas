@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "publication",
     "contact",
     "empowerment_program",
+    "fellowship",
 ]
 
 MIDDLEWARE = [
