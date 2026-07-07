@@ -33,6 +33,7 @@ urlpatterns = [
     path("api/", include("contact.urls")),
     path("api/", include("empowerment_program.urls")),
     path("api/", include("fellowship.urls")),
+    path("api/", include("team.urls")),
 ]
 
 if settings.DEBUG:
