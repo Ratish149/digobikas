@@ -21,8 +21,4 @@ class ContactFilter(django_filters.FilterSet):
     def filter_search(self, queryset, name, value):
         from django.db.models import Q
 
-        return queryset.filter(
-            Q(name__icontains=value)
-            | Q(email__icontains=value)
-            | Q(message__icontains=value)
-        )
+        return queryset.filter(Q(name__icontains=value) | Q(email__icontains=value))

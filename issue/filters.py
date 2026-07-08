@@ -19,9 +19,4 @@ class IssueFilter(django_filters.FilterSet):
         fields = []
 
     def filter_search(self, queryset, name, value):
-        from django.db.models import Q
-
-        return queryset.filter(
-            Q(title__icontains=value)
-            | Q(thumbnail_alt_description__icontains=value)
-        )
+        return queryset.filter(title__icontains=value)

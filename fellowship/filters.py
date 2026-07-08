@@ -1,5 +1,4 @@
 import django_filters
-from django.db.models import Q
 
 from fellowship.models import Fellowship, FellowshipMember
 
@@ -19,7 +18,7 @@ class FellowshipFilter(django_filters.FilterSet):
         fields = []
 
     def filter_search(self, queryset, name, value):
-        return queryset.filter(Q(title__icontains=value))
+        return queryset.filter(title__icontains=value)
 
 
 class FellowshipMemberFilter(django_filters.FilterSet):
@@ -41,6 +40,4 @@ class FellowshipMemberFilter(django_filters.FilterSet):
         fields = ["fellowship"]
 
     def filter_search(self, queryset, name, value):
-        return queryset.filter(
-            Q(name__icontains=value) | Q(description__icontains=value)
-        )
+        return queryset.filter(name__icontains=value)

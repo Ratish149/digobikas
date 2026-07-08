@@ -48,6 +48,4 @@ class PostsFilter(django_filters.FilterSet):
         fields = ["category", "tag", "author"]
 
     def filter_search(self, queryset, name, value):
-        from django.db.models import Q
-
-        return queryset.filter(Q(title__icontains=value) | Q(content__icontains=value))
+        return queryset.filter(title__icontains=value)

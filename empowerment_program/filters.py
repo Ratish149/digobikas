@@ -18,12 +18,8 @@ class EmpowermentProgramFilter(django_filters.FilterSet):
         fields = []
 
     def filter_search(self, queryset, name, value):
-        from django.db.models import Q
 
-        return queryset.filter(
-            Q(title__icontains=value)
-            | Q(content__icontains=value)
-        )
+        return queryset.filter(title__icontains=value)
 
 
 class EmpowermentProgramCohortFilter(django_filters.FilterSet):
@@ -45,9 +41,4 @@ class EmpowermentProgramCohortFilter(django_filters.FilterSet):
         fields = ["program"]
 
     def filter_search(self, queryset, name, value):
-        from django.db.models import Q
-
-        return queryset.filter(
-            Q(name__icontains=value)
-            | Q(image_alt_description__icontains=value)
-        )
+        return queryset.filter(name__icontains=value)
