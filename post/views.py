@@ -10,7 +10,7 @@ from post.filters import CategoryFilter, PostsFilter, TagFilter
 from post.models import Category, Tag
 from post.selectors.post_selector import get_posts_list
 from post.serializers import CategorySerializer, PostsSerializer, TagSerializer
-from post.services.post_service import import_posts_from_json
+from post.services.post_service import deduplicate_posts, import_posts_from_json
 
 
 class CategoryListCreateAPIView(generics.ListCreateAPIView):
@@ -98,3 +98,23 @@ class PostsImportAPIView(APIView):
                 {"error": str(e)},
                 status=status.HTTP_400_BAD_REQUEST,
             )
+
+
+class PostsDeduplicateAPIView(APIView):
+    """
+    Endpoint to find and delete duplicate posts sharing the same slug.
+    """
+
+    permission_classes = []
+    authentication_classes = []
+
+    def post(self, request, *args, **kwargs):
+        try:
+            result = deduplicate_posts()
+            return Response(result, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(
+                {"error": str(e)},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+

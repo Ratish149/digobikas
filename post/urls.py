@@ -3,6 +3,7 @@ from django.urls import path
 from post.views import (
     CategoryListCreateAPIView,
     CategoryRetrieveUpdateDestroyAPIView,
+    PostsDeduplicateAPIView,
     PostsImportAPIView,
     PostsListCreateAPIView,
     PostsRetrieveUpdateDestroyAPIView,
@@ -27,6 +28,11 @@ urlpatterns = [
     ),
     path("posts/", PostsListCreateAPIView.as_view(), name="posts-list-create"),
     path("post-import/", PostsImportAPIView.as_view(), name="posts-import"),
+    path(
+        "post-deduplicate/",
+        PostsDeduplicateAPIView.as_view(),
+        name="posts-deduplicate",
+    ),
     path(
         "posts/<slug:slug>/",
         PostsRetrieveUpdateDestroyAPIView.as_view(),

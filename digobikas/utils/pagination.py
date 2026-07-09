@@ -10,6 +10,6 @@ class CustomPagination(PageNumberPagination):
       - page_size : number of results per page (default 10, max 100)
     """
 
-    page_size = 10
+    page_size = 20
     page_size_query_param = "page_size"
     max_page_size = 100

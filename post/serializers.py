@@ -85,6 +85,7 @@ class PostsSerializer(serializers.ModelSerializer):
             "slug",
             "content",
             "thumbnail",
+            "thumbnail_alt_description",
             "created_at",
             "updated_at",
             "author",

@@ -36,6 +36,7 @@ class Post(TimeStampedModel):
     slug = models.SlugField(max_length=100, null=True, blank=True)
     content = models.TextField()
     thumbnail = models.FileField(upload_to="post_thumbnails/", blank=True, null=True)
+    thumbnail_alt_description = models.CharField(max_length=255, blank=True, null=True)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,

@@ -54,6 +54,7 @@ def create_post(
     category: Category,
     tags: list[Tag] = None,
     thumbnail=None,
+    thumbnail_alt_description: str = None,
     meta_title: str = None,
     meta_description: str = None,
 ) -> Post:
@@ -64,6 +65,7 @@ def create_post(
             author=author,
             category=category,
             thumbnail=thumbnail,
+            thumbnail_alt_description=thumbnail_alt_description,
             meta_title=meta_title,
             meta_description=meta_description,
         )
@@ -194,6 +196,13 @@ def import_posts_from_json(*, file_path: str | Path, author=None) -> dict:
                                 post.thumbnail.save(
                                     image_filename, File(img_file), save=False
                                 )
+                                alt_text = attachment.get("postmeta", {}).get(
+                                    "_wp_attachment_image_alt"
+                                )
+                                if isinstance(alt_text, list) and alt_text:
+                                    alt_text = alt_text[0]
+                                if alt_text:
+                                    post.thumbnail_alt_description = alt_text
                                 updated = True
 
                 if updated:
@@ -230,6 +239,13 @@ def import_posts_from_json(*, file_path: str | Path, author=None) -> dict:
                                 post.thumbnail.save(
                                     image_filename, File(img_file), save=False
                                 )
+                                alt_text = attachment.get("postmeta", {}).get(
+                                    "_wp_attachment_image_alt"
+                                )
+                                if isinstance(alt_text, list) and alt_text:
+                                    alt_text = alt_text[0]
+                                if alt_text:
+                                    post.thumbnail_alt_description = alt_text
                                 post.save()
 
                 if tags_to_link:
@@ -246,4 +262,50 @@ def import_posts_from_json(*, file_path: str | Path, author=None) -> dict:
         "updated_posts": updated_posts_count,
         "created_categories": created_categories,
         "created_tags": created_tags,
+    }
+
+
+def deduplicate_posts() -> dict:
+    """
+    Remove duplicate posts having the same slug. Keeps the earliest created one.
+    """
+    from django.db.models import Count
+
+    # Find all slugs that appear more than once (excluding null/empty slugs)
+    duplicate_slugs = (
+        Post.objects
+        .exclude(slug__isnull=True)
+        .exclude(slug="")
+        .values("slug")
+        .annotate(slug_count=Count("slug"))
+        .filter(slug_count__gt=1)
+    )
+
+    deleted_count = 0
+    details = []
+
+    with transaction.atomic():
+        for entry in duplicate_slugs:
+            slug = entry["slug"]
+            posts = list(Post.objects.filter(slug=slug).order_by("created_at"))
+            # Keep the oldest one
+            keep_post = posts[0]
+            delete_posts = posts[1:]
+
+            deleted_ids = []
+            for post in delete_posts:
+                deleted_ids.append(post.id)
+                post.delete()
+                deleted_count += 1
+
+            details.append({
+                "slug": slug,
+                "kept_id": keep_post.id,
+                "deleted_ids": deleted_ids,
+            })
+
+    return {
+        "status": "success",
+        "deleted_count": deleted_count,
+        "details": details,
     }
