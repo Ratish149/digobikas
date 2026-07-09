@@ -1,6 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 
+from digobikas.utils.pagination import CustomPagination
 from digobikas.utils.permissions import IsAdminOrReadOnly
 from empowerment_program.filters import (
     EmpowermentProgramCohortFilter,
@@ -23,12 +24,15 @@ class EmpowermentProgramListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = EmpowermentProgramFilter
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return get_programs_list()
 
 
-class EmpowermentProgramRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class EmpowermentProgramRetrieveUpdateDestroyAPIView(
+    generics.RetrieveUpdateDestroyAPIView
+):
     serializer_class = EmpowermentProgramSerializer
     permission_classes = [IsAdminOrReadOnly]
     lookup_field = "slug"
@@ -42,6 +46,7 @@ class CohortListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = EmpowermentProgramCohortFilter
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return get_cohorts_list()
@@ -60,6 +65,7 @@ class CohortVolunteerListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = CohortVolunteerSerializer
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
+    pagination_class = CustomPagination
 
     # Reusing DjangoFilterBackend without a specific filterset class (or we could build one,
     # but basic model filters and list operations are supported out of the box).
@@ -67,7 +73,9 @@ class CohortVolunteerListCreateAPIView(generics.ListCreateAPIView):
         return get_volunteers_list()
 
 
-class CohortVolunteerRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class CohortVolunteerRetrieveUpdateDestroyAPIView(
+    generics.RetrieveUpdateDestroyAPIView
+):
     serializer_class = CohortVolunteerSerializer
     permission_classes = [IsAdminOrReadOnly]
     lookup_field = "pk"

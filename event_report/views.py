@@ -3,6 +3,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from digobikas.utils.pagination import CustomPagination
 from digobikas.utils.permissions import IsAdminOrReadOnly
 from event_report.filters import EventReportFilter
 from event_report.selectors.event_report_selector import get_event_reports_list
@@ -15,6 +16,7 @@ class EventReportListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = EventReportFilter
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return get_event_reports_list()

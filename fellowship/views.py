@@ -3,6 +3,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from digobikas.utils.pagination import CustomPagination
 from digobikas.utils.permissions import IsAdminOrReadOnly
 from fellowship.filters import FellowshipFilter, FellowshipMemberFilter
 from fellowship.selectors.fellowship_selector import (
@@ -18,6 +19,7 @@ class FellowshipListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = FellowshipFilter
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return get_fellowships_list()
@@ -37,6 +39,7 @@ class FellowshipMemberListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = FellowshipMemberFilter
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return get_fellowship_members_list()

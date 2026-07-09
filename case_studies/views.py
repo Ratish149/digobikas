@@ -7,6 +7,7 @@ from case_studies.filters import CaseStudyFilter
 from case_studies.selectors.case_study_selector import get_case_studies_list
 from case_studies.serializers import CaseStudySerializer
 from case_studies.services.case_study_service import import_case_studies
+from digobikas.utils.pagination import CustomPagination
 from digobikas.utils.permissions import IsAdminOrReadOnly
 
 
@@ -15,6 +16,7 @@ class CaseStudyListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = CaseStudyFilter
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return get_case_studies_list()

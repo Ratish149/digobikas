@@ -7,6 +7,7 @@ from blog.filters import BlogFilter
 from blog.selectors.blog_selector import get_blogs_list
 from blog.serializers import BlogSerializer
 from blog.services.blog_service import import_blogs
+from digobikas.utils.pagination import CustomPagination
 from digobikas.utils.permissions import IsAdminOrReadOnly
 
 
@@ -15,6 +16,7 @@ class BlogListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = BlogFilter
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return get_blogs_list()

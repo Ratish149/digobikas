@@ -3,6 +3,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from digobikas.utils.pagination import CustomPagination
 from digobikas.utils.permissions import IsAdminOrReadOnly
 from issue.filters import IssueFilter
 from issue.selectors.issue_selector import get_issues_list
@@ -15,6 +16,7 @@ class IssueListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = IssueFilter
+    pagination_class = CustomPagination
 
     def get_queryset(self):
         return get_issues_list()
