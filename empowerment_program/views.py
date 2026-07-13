@@ -17,6 +17,8 @@ from empowerment_program.selectors.empowerment_selector import (
 from empowerment_program.serializers import (
     CohortVolunteerSerializer,
     EmpowermentProgramCohortSerializer,
+    EmpowermentProgramDetailSerializer,
+    EmpowermentProgramListSerializer,
     EmpowermentProgramSerializer,
 )
 from empowerment_program.services.empowerment_service import (
@@ -34,6 +36,11 @@ class EmpowermentProgramListCreateAPIView(generics.ListCreateAPIView):
     def get_queryset(self):
         return get_programs_list()
 
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return EmpowermentProgramListSerializer
+        return EmpowermentProgramSerializer
+
 
 class EmpowermentProgramRetrieveUpdateDestroyAPIView(
     generics.RetrieveUpdateDestroyAPIView
@@ -44,6 +51,11 @@ class EmpowermentProgramRetrieveUpdateDestroyAPIView(
 
     def get_queryset(self):
         return get_programs_list()
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return EmpowermentProgramDetailSerializer
+        return EmpowermentProgramSerializer
 
 
 class CohortListCreateAPIView(generics.ListCreateAPIView):

@@ -65,6 +65,69 @@ class EmpowermentProgramCohortSerializer(serializers.ModelSerializer):
         return update_cohort(cohort=instance, **validated_data)
 
 
+class EmpowermentProgramListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EmpowermentProgram
+        fields = [
+            "id",
+            "title",
+            "slug",
+            "content",
+            "cohorts",
+            "created_at",
+            "updated_at",
+        ]
+        read_only_fields = ["id", "slug", "created_at", "updated_at"]
+
+
+class EmpowermentProgramCohortDetailSerializer(serializers.ModelSerializer):
+    slug = serializers.SlugField(required=False, read_only=True)
+    has_volunteers = serializers.SerializerMethodField()
+
+    class Meta:
+        model = EmpowermentProgramCohort
+        fields = [
+            "id",
+            "program",
+            "name",
+            "slug",
+            "image",
+            "image_alt_description",
+            "has_volunteers",
+            "created_at",
+            "updated_at",
+        ]
+        read_only_fields = ["id", "slug", "created_at", "updated_at"]
+
+    def get_has_volunteers(self, obj):
+        # Returns True if this cohort has volunteers, False otherwise
+        return obj.volunteers.exists()
+
+
+class EmpowermentProgramDetailSerializer(serializers.ModelSerializer):
+    slug = serializers.SlugField(required=False, read_only=True)
+    has_volunteers = serializers.SerializerMethodField()
+    cohorts = EmpowermentProgramCohortDetailSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = EmpowermentProgram
+        fields = [
+            "id",
+            "title",
+            "slug",
+            "content",
+            "cohorts",
+            "has_volunteers",
+            "created_at",
+            "updated_at",
+        ]
+        read_only_fields = ["id", "slug", "created_at", "updated_at"]
+
+    def get_has_volunteers(self, obj):
+        # Returns True if any cohort of this program has volunteers, False otherwise
+        return obj.cohorts.filter(volunteers__isnull=False).exists()
+
+
 class EmpowermentProgramSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(required=False, read_only=True)
     cohorts = EmpowermentProgramCohortSerializer(many=True, read_only=True)
