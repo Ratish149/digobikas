@@ -78,13 +78,13 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "https://kept-club-ultram-biodiversity.trycloudflare.com",
+    "https://window-sheet-trader-forth.trycloudflare.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "https://kept-club-ultram-biodiversity.trycloudflare.com",
+    "https://window-sheet-trader-forth.trycloudflare.com",
 ]
 
 ROOT_URLCONF = "digobikas.urls"

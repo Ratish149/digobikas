@@ -5,6 +5,7 @@ from empowerment_program.views import (
     CohortRetrieveUpdateDestroyAPIView,
     CohortVolunteerListCreateAPIView,
     CohortVolunteerRetrieveUpdateDestroyAPIView,
+    EmpowermentProgramImportAPIView,
     EmpowermentProgramListCreateAPIView,
     EmpowermentProgramRetrieveUpdateDestroyAPIView,
 )
@@ -14,6 +15,11 @@ urlpatterns = [
         "empowerment-programs/",
         EmpowermentProgramListCreateAPIView.as_view(),
         name="empowerment-program-list-create",
+    ),
+    path(
+        "empowerment-programs/import/",
+        EmpowermentProgramImportAPIView.as_view(),
+        name="empowerment-program-import",
     ),
     path(
         "empowerment-programs/<slug:slug>/",

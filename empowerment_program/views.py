@@ -1,5 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from digobikas.utils.pagination import CustomPagination
 from digobikas.utils.permissions import IsAdminOrReadOnly
@@ -16,6 +18,9 @@ from empowerment_program.serializers import (
     CohortVolunteerSerializer,
     EmpowermentProgramCohortSerializer,
     EmpowermentProgramSerializer,
+)
+from empowerment_program.services.empowerment_service import (
+    import_empowerment_programs,
 )
 
 
@@ -82,3 +87,22 @@ class CohortVolunteerRetrieveUpdateDestroyAPIView(
 
     def get_queryset(self):
         return get_volunteers_list()
+
+
+class EmpowermentProgramImportAPIView(APIView):
+    """
+    Endpoint to import empowerment programs from pages.json and attachments.json files.
+    """
+
+    permission_classes = []
+    authentication_classes = []
+
+    def post(self, request, *args, **kwargs):
+        try:
+            result = import_empowerment_programs()
+            return Response(result, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(
+                {"error": str(e)},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
