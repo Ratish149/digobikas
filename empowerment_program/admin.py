@@ -1,7 +1,22 @@
+from django import forms
 from django.contrib import admin
+from tinymce.widgets import TinyMCE
 from unfold.admin import ModelAdmin, TabularInline
 
 from .models import CohortVolunteer, EmpowermentProgram, EmpowermentProgramCohort
+
+
+class EmpowermentProgramAdminForm(forms.ModelForm):
+    class Meta:
+        model = EmpowermentProgram
+        fields = [
+            "title",
+            "slug",
+            "content",
+        ]
+        widgets = {
+            "content": TinyMCE(attrs={"cols": 80, "rows": 70}),
+        }
 
 
 class CohortVolunteerInline(TabularInline):
@@ -17,6 +32,7 @@ class EmpowermentProgramCohortInline(TabularInline):
 
 @admin.register(EmpowermentProgram)
 class EmpowermentProgramAdmin(ModelAdmin):
+    form = EmpowermentProgramAdminForm
     list_display = ["title", "slug", "created_at"]
     search_fields = ["title", "content"]
     prepopulated_fields = {"slug": ("title",)}
@@ -35,4 +51,3 @@ class EmpowermentProgramCohortAdmin(ModelAdmin):
 class CohortVolunteerAdmin(ModelAdmin):
     list_display = ["name", "cohort", "created_at"]
     search_fields = ["name", "cohort__name"]
-
