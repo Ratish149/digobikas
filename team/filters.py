@@ -16,9 +16,13 @@ class TeamMemberFilter(django_filters.FilterSet):
         )
     )
 
+    gender = django_filters.ChoiceFilter(
+        choices=TeamMember.GENDER_CHOICE, field_name="gender"
+    )
+
     class Meta:
         model = TeamMember
-        fields = ["member_type"]
+        fields = ["member_type", "gender"]
 
     def filter_search(self, queryset, name, value):
         return queryset.filter(name__icontains=value)

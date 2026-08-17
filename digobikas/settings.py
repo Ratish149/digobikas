@@ -79,13 +79,13 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "https://dvd-feb-warner-professor.trycloudflare.com",
+    "https://cycle-taxes-agree-thread.trycloudflare.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
-    "https://dvd-feb-warner-professor.trycloudflare.com",
+    "https://cycle-taxes-agree-thread.trycloudflare.com",
 ]
 
 ROOT_URLCONF = "digobikas.urls"

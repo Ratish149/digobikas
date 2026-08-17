@@ -10,6 +10,11 @@ class TeamMember(TimeStampedModel):
         ("board_member", "Board Member"),
         ("staff", "Staff"),
     )
+    GENDER_CHOICE = (
+        ("male", "Male"),
+        ("female", "Female"),
+        ("other", "Other"),
+    )
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, null=True, blank=True)
     designation = models.CharField(max_length=255, null=True, blank=True)
@@ -19,6 +24,9 @@ class TeamMember(TimeStampedModel):
         max_length=50,
         choices=MEMBER_TYPE_CHOICE,
         default="board_member",
+    )
+    gender = models.CharField(
+        max_length=50, choices=GENDER_CHOICE, null=True, blank=True
     )
 
     def __str__(self):
