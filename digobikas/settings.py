@@ -84,12 +84,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
     "https://treatments-sin-delivered-requested.trycloudflare.com",
+    "https://ivgrresivutgjhb5ococapun.nepdora.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",
     "https://treatments-sin-delivered-requested.trycloudflare.com",
+    "https://ivgrresivutgjhb5ococapun.nepdora.com",
 ]
 
 ROOT_URLCONF = "digobikas.urls"
