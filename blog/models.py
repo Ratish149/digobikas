@@ -14,7 +14,7 @@ class Blog(TimeStampedModel):
     thumbnail_alt_description = models.CharField(max_length=255, blank=True, null=True)
     file = models.FileField(upload_to="blogs/files/", blank=True, null=True)
     content = models.TextField(blank=True, null=True)
-    url = models.URLField(blank=True, null=True)
+    url = models.URLField(max_length=500, blank=True, null=True)
     meta_title = models.CharField(max_length=255, blank=True, null=True)
     meta_description = models.TextField(blank=True, null=True)
 
