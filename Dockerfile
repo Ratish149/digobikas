@@ -31,6 +31,9 @@ COPY . .
 # Create media and static directories
 RUN mkdir -p /app/media /app/static
 
+# Collect static files at build time (WhiteNoise will serve them)
+RUN python manage.py collectstatic --noinput --clear
+
 # Expose port
 EXPOSE 8000
 
