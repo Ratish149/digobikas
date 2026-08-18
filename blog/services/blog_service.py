@@ -50,7 +50,7 @@ def update_blog(*, blog: Blog, **data) -> Blog:
 def resolve_image_file(attachment):
     """
     Given an attachment dict from attachments.json, find the actual file
-    on disk in the flat media/ directory (checking both plain and prefixed names).
+    on disk in the flat media/ or static/ directory (checking both plain and prefixed names).
     """
     rel_path = attachment.get("postmeta", {}).get("_wp_attached_file")
     if not rel_path:
@@ -66,19 +66,32 @@ def resolve_image_file(attachment):
     prefix = dir_part.replace("/", "_").replace("\\", "_") if dir_part else ""
 
     media_dir = os.path.join(settings.BASE_DIR, "media")
+    static_dir = os.path.join(settings.BASE_DIR, "static")
 
-    # 1. Check plain basename (e.g. Rethinking.jpg)
+    # 1. Check plain basename (e.g. Rethinking.jpg) in media/
     path_plain = os.path.join(media_dir, basename)
     if os.path.exists(path_plain):
         return path_plain
 
-    # 2. Check prefixed version (e.g. 2020_11_Rethinking.jpg)
+    # 2. Check prefixed version (e.g. 2020_11_Rethinking.jpg) in media/
     if prefix:
         path_prefixed = os.path.join(media_dir, f"{prefix}_{basename}")
         if os.path.exists(path_prefixed):
             return path_prefixed
 
+    # 3. Check plain basename in static/
+    path_static_plain = os.path.join(static_dir, basename)
+    if os.path.exists(path_static_plain):
+        return path_static_plain
+
+    # 4. Check prefixed version in static/
+    if prefix:
+        path_static_prefixed = os.path.join(static_dir, f"{prefix}_{basename}")
+        if os.path.exists(path_static_prefixed):
+            return path_static_prefixed
+
     return None
+
 
 
 def parse_blogs_content(content):
@@ -195,17 +208,31 @@ def import_blogs() -> dict:
                 pdf_filename = os.path.basename(parsed_url.path)
                 # Check in flat media directory
                 source_pdf_path = os.path.join(settings.BASE_DIR, "media", pdf_filename)
+                
                 # If not found, check prefixed version in media
                 if not os.path.exists(source_pdf_path):
                     media_dir = os.path.join(settings.BASE_DIR, "media")
-                    for f in os.listdir(media_dir):
-                        if f.endswith(pdf_filename):
-                            source_pdf_path = os.path.join(media_dir, f)
-                            break
+                    if os.path.exists(media_dir):
+                        for f in os.listdir(media_dir):
+                            if f.endswith(pdf_filename):
+                                source_pdf_path = os.path.join(media_dir, f)
+                                break
+
+                # If still not found, check in static/
+                if not os.path.exists(source_pdf_path):
+                    static_dir = os.path.join(settings.BASE_DIR, "static")
+                    if os.path.exists(os.path.join(static_dir, pdf_filename)):
+                        source_pdf_path = os.path.join(static_dir, pdf_filename)
+                    else:
+                        for f in os.listdir(static_dir):
+                            if f.endswith(pdf_filename):
+                                source_pdf_path = os.path.join(static_dir, f)
+                                break
 
                 if os.path.exists(source_pdf_path):
-                    with open(source_pdf_path, "rb") as pdf_file:
-                        blog.file.save(pdf_filename, File(pdf_file), save=False)
+                    if not blog.file:
+                        with open(source_pdf_path, "rb") as pdf_file:
+                            blog.file.save(pdf_filename, File(pdf_file), save=False)
             else:
                 blog.url = main_link
 
@@ -215,10 +242,11 @@ def import_blogs() -> dict:
                 image_source_path = resolve_image_file(attachment)
                 if image_source_path and os.path.exists(image_source_path):
                     image_filename = os.path.basename(image_source_path)
-                    with open(image_source_path, "rb") as img_file:
-                        blog.thumbnail_image.save(
-                            image_filename, File(img_file), save=False
-                        )
+                    if not blog.thumbnail_image:
+                        with open(image_source_path, "rb") as img_file:
+                            blog.thumbnail_image.save(
+                                image_filename, File(img_file), save=False
+                            )
                         blog.thumbnail_alt_description = f"Thumbnail for {title}"
 
             blog.save()

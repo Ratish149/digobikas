@@ -48,7 +48,7 @@ def update_news(*, news: News, **data) -> News:
 def resolve_image_file(attachment):
     """
     Given an attachment dict from attachments.json, find the actual file
-    on disk in the flat media/ directory (checking both plain and prefixed names).
+    on disk in the flat media/ or static/ directory (checking both plain and prefixed names).
     """
     rel_path = attachment.get("postmeta", {}).get("_wp_attached_file")
     if not rel_path:
@@ -64,19 +64,32 @@ def resolve_image_file(attachment):
     prefix = dir_part.replace("/", "_").replace("\\", "_") if dir_part else ""
 
     media_dir = os.path.join(settings.BASE_DIR, "media")
+    static_dir = os.path.join(settings.BASE_DIR, "static")
 
-    # 1. Check plain basename (e.g. Rethinking.jpg)
+    # 1. Check plain basename (e.g. Rethinking.jpg) in media/
     path_plain = os.path.join(media_dir, basename)
     if os.path.exists(path_plain):
         return path_plain
 
-    # 2. Check prefixed version (e.g. 2020_11_Rethinking.jpg)
+    # 2. Check prefixed version (e.g. 2020_11_Rethinking.jpg) in media/
     if prefix:
         path_prefixed = os.path.join(media_dir, f"{prefix}_{basename}")
         if os.path.exists(path_prefixed):
             return path_prefixed
 
+    # 3. Check plain basename in static/
+    path_static_plain = os.path.join(static_dir, basename)
+    if os.path.exists(path_static_plain):
+        return path_static_plain
+
+    # 4. Check prefixed version in static/
+    if prefix:
+        path_static_prefixed = os.path.join(static_dir, f"{prefix}_{basename}")
+        if os.path.exists(path_static_prefixed):
+            return path_static_prefixed
+
     return None
+
 
 
 def parse_news_content(content, attachments_map):

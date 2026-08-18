@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    command: sh -c "python manage.py migrate && gunicorn digobikas.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - digobikas_media_data:/app/media   # Persist media uploads
+    networks:
+      - coolify
+
+networks:
+  coolify:
+    external: true
+
+volumes:
+  digobikas_media_data:
+

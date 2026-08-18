@@ -198,7 +198,7 @@ def download_file_with_fallback(url, local_path, timeout=10, retries=3):
 def resolve_image_file(attachment):
     """
     Given an attachment dict from attachments.json, find the actual file
-    on disk in the flat media/ directory (checking both plain and prefixed names).
+    on disk in the flat media/ or static/ directory (checking both plain and prefixed names).
     """
     rel_path = attachment.get("postmeta", {}).get("_wp_attached_file")
     if not rel_path:
@@ -214,17 +214,29 @@ def resolve_image_file(attachment):
     prefix = dir_part.replace("/", "_").replace("\\", "_") if dir_part else ""
 
     media_dir = os.path.join(settings.BASE_DIR, "media")
+    static_dir = os.path.join(settings.BASE_DIR, "static")
 
-    # 1. Check plain basename (e.g. Rethinking.jpg)
+    # 1. Check plain basename (e.g. Rethinking.jpg) in media/
     path_plain = os.path.join(media_dir, basename)
     if os.path.exists(path_plain):
         return path_plain
 
-    # 2. Check prefixed version (e.g. 2020_11_Rethinking.jpg)
+    # 2. Check prefixed version (e.g. 2020_11_Rethinking.jpg) in media/
     if prefix:
         path_prefixed = os.path.join(media_dir, f"{prefix}_{basename}")
         if os.path.exists(path_prefixed):
             return path_prefixed
+
+    # 3. Check plain basename in static/
+    path_static_plain = os.path.join(static_dir, basename)
+    if os.path.exists(path_static_plain):
+        return path_static_plain
+
+    # 4. Check prefixed version in static/
+    if prefix:
+        path_static_prefixed = os.path.join(static_dir, f"{prefix}_{basename}")
+        if os.path.exists(path_static_prefixed):
+            return path_static_prefixed
 
     return None
 
@@ -331,15 +343,17 @@ def import_empowerment_programs() -> dict:
 
             # Create or get Empowerment Program
             program, created = EmpowermentProgram.objects.get_or_create(
-                slug="green-city-volunteer-2023",
-                defaults={"title": title, "content": cleaned_content},
+                title=title,
+                defaults={
+                    "slug": "green-city-volunteer-2023",
+                    "content": cleaned_content,
+                },
             )
-            if created:
-                programs_created += 1
-            else:
-                program.title = title
+            if not created:
                 program.content = cleaned_content
                 program.save()
+            else:
+                programs_created += 1
 
             # Parse cohorts from Green City Volunteers content columns
             columns = re.findall(
@@ -441,15 +455,17 @@ def import_empowerment_programs() -> dict:
 
             # Create or get Empowerment Program
             program, created = EmpowermentProgram.objects.get_or_create(
-                slug="climate-justice-summer-school-2023",
-                defaults={"title": title, "content": cleaned_content},
+                title=title,
+                defaults={
+                    "slug": "climate-justice-summer-school-2023",
+                    "content": cleaned_content,
+                },
             )
-            if created:
-                programs_created += 1
-            else:
-                program.title = title
+            if not created:
                 program.content = cleaned_content
                 program.save()
+            else:
+                programs_created += 1
 
             # Parse cohorts from Climate Justice Summer School content using text separators
             separators = list(
