@@ -9,6 +9,7 @@ class TeamMember(TimeStampedModel):
     MEMBER_TYPE_CHOICE = (
         ("board_member", "Board Member"),
         ("staff", "Staff"),
+        ("formal_staff", "Formal Staff"),
     )
     GENDER_CHOICE = (
         ("male", "Male"),
