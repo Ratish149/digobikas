@@ -19,7 +19,7 @@ class TeamMember(TimeStampedModel):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, null=True, blank=True)
     designation = models.CharField(max_length=255, null=True, blank=True)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     image = models.FileField(upload_to="team/images/", null=True, blank=True)
     member_type = models.CharField(
         max_length=50,
