@@ -16,6 +16,7 @@ class TeamMemberSerializer(serializers.ModelSerializer):
             "designation",
             "description",
             "image",
+            "gender",
             "member_type",
             "created_at",
             "updated_at",
