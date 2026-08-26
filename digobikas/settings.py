@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "empowerment_program",
     "fellowship",
     "team",
+    "video",
 ]
 
 MIDDLEWARE = [
