@@ -18,16 +18,20 @@ def create_team_member(
     name: str,
     member_type: str = "board_member",
     designation: str = None,
+    order: int = 0,
     description: str = "",
     image=None,
+    gender: str = None,
 ) -> TeamMember:
     with transaction.atomic():
         member = TeamMember(
             name=name,
             member_type=member_type,
             designation=designation,
+            order=order,
             description=description,
             image=image,
+            gender=gender,
         )
         member.full_clean()
         member.save()

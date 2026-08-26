@@ -14,6 +14,7 @@ class TeamMemberSerializer(serializers.ModelSerializer):
             "name",
             "slug",
             "designation",
+            "order",
             "description",
             "image",
             "gender",

@@ -11,6 +11,7 @@ class TeamMemberFilter(django_filters.FilterSet):
 
     ordering = django_filters.OrderingFilter(
         fields=(
+            ("order", "order"),
             ("created_at", "created_at"),
             ("name", "name"),
         )
