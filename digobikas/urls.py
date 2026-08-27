@@ -35,6 +35,7 @@ urlpatterns = [
     path("api/", include("fellowship.urls")),
     path("api/", include("team.urls")),
     path("api/", include("video.urls")),
+    path("api/", include("opportunity.urls")),
 ]
 
 if settings.DEBUG:
