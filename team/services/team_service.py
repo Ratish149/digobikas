@@ -153,9 +153,13 @@ def download_file_with_fallback(url, local_path, timeout=10, retries=3):
     return False
 
 
-def clean_wp_content(raw_content):
+def clean_wp_content(raw_content, member_name=None):
     if not raw_content:
         return ""
+    # Remove HTML heading tags (h1-h6) which usually contain page/section titles (e.g. member name header)
+    raw_content = re.sub(
+        r"<h[1-6][^>]*>.*?</h[1-6]>", "", raw_content, flags=re.DOTALL | re.IGNORECASE
+    )
     # Remove vc shortcodes
     raw_content = re.sub(r"\[/?vc_[^\]]*\]", "", raw_content)
     # Remove HTML tags
@@ -163,8 +167,20 @@ def clean_wp_content(raw_content):
     # Unescape html entities
     raw_content = html.unescape(raw_content)
     # Normalize whitespace
-    raw_content = re.sub(r"\s+", " ", raw_content)
-    return raw_content.strip()
+    raw_content = re.sub(r"\s+", " ", raw_content).strip()
+
+    if member_name:
+        clean_name = member_name.strip()
+        if clean_name:
+            # Remove duplicated name at the beginning, e.g. "Sabin Rimal Sabin Rimal..."
+            double_name_pattern = (
+                rf"^{re.escape(clean_name)}\s+(?={re.escape(clean_name)}\b)"
+            )
+            raw_content = re.sub(
+                double_name_pattern, "", raw_content, flags=re.IGNORECASE
+            ).strip()
+
+    return raw_content
 
 
 def parse_team_columns(content):
@@ -291,7 +307,7 @@ def import_team() -> dict:
 
         if member_page:
             raw_content = member_page.get("content", "")
-            return clean_wp_content(raw_content)
+            return clean_wp_content(raw_content, member_name=member_name)
         return ""
 
     imported_members = []
