@@ -12,6 +12,7 @@ class OpportunityAdminForm(forms.ModelForm):
         fields = [
             "type",
             "title",
+            "slug",
             "description",
             "image",
             "link",
@@ -25,6 +26,6 @@ class OpportunityAdminForm(forms.ModelForm):
 @admin.register(Opportunity)
 class OpportunityAdmin(ModelAdmin):
     form = OpportunityAdminForm
-    list_display = ["title", "type", "apply_by", "created_at"]
+    list_display = ["title", "type", "slug", "apply_by", "created_at"]
     list_filter = ["type"]
     search_fields = ["title", "description"]
