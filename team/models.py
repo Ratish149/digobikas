@@ -30,6 +30,10 @@ class TeamMember(TimeStampedModel):
     gender = models.CharField(
         max_length=50, choices=GENDER_CHOICE, null=True, blank=True
     )
+    facebook_link = models.URLField(null=True, blank=True)
+    twitter_link = models.URLField(null=True, blank=True)
+    linkedin_link = models.URLField(null=True, blank=True)
+    instagram_link = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return self.name

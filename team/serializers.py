@@ -19,6 +19,10 @@ class TeamMemberSerializer(serializers.ModelSerializer):
             "image",
             "gender",
             "member_type",
+            "facebook_link",
+            "twitter_link",
+            "linkedin_link",
+            "instagram_link",
             "created_at",
             "updated_at",
         ]

@@ -22,6 +22,10 @@ def create_team_member(
     description: str = "",
     image=None,
     gender: str = None,
+    facebook_link: str = None,
+    twitter_link: str = None,
+    linkedin_link: str = None,
+    instagram_link: str = None,
 ) -> TeamMember:
     with transaction.atomic():
         member = TeamMember(
@@ -32,6 +36,10 @@ def create_team_member(
             description=description,
             image=image,
             gender=gender,
+            facebook_link=facebook_link,
+            twitter_link=twitter_link,
+            linkedin_link=linkedin_link,
+            instagram_link=instagram_link,
         )
         member.full_clean()
         member.save()
