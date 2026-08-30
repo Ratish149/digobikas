@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 from tinymce.models import HTMLField
 
 
@@ -12,6 +13,7 @@ class Opportunity(models.Model):
     )
     type = models.CharField(max_length=255, choices=TYPE_CHOICES)
     title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     description = HTMLField()
     image = models.FileField(upload_to="opportunity/images/", null=True, blank=True)
     link = models.URLField(null=True, blank=True)
@@ -21,3 +23,7 @@ class Opportunity(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)

@@ -22,7 +22,7 @@ class OpportunityListCreateAPIView(generics.ListCreateAPIView):
 class OpportunityRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = OpportunitySerializer
     permission_classes = [IsAdminOrReadOnly]
-    lookup_field = "pk"
+    lookup_field = "slug"
 
     def get_queryset(self):
         return get_opportunities_list()

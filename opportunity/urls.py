@@ -12,7 +12,7 @@ urlpatterns = [
         name="opportunity-list-create",
     ),
     path(
-        "opportunities/<int:pk>/",
+        "opportunities/<slug:slug>/",
         OpportunityRetrieveUpdateDestroyAPIView.as_view(),
         name="opportunity-detail",
     ),

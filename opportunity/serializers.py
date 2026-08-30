@@ -10,6 +10,7 @@ class OpportunitySerializer(serializers.ModelSerializer):
             "id",
             "type",
             "title",
+            "slug",
             "description",
             "image",
             "link",
