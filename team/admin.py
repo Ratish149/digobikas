@@ -7,6 +7,7 @@ from team.models import TeamMember
 @admin.register(TeamMember)
 class TeamMemberAdmin(ModelAdmin):
     list_display = ["name", "member_type", "designation", "order", "slug", "created_at"]
+    list_editable = ["order"]
     list_filter = ["member_type"]
     search_fields = ["name", "designation"]
     prepopulated_fields = {"slug": ("name",)}
