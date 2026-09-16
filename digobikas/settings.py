@@ -95,7 +95,11 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "https://treatments-sin-delivered-requested.trycloudflare.com",
     "https://ivgrresivutgjhb5ococapun.nepdora.com",
+    "https://api.digobikas.org",
 ]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
 
 ROOT_URLCONF = "digobikas.urls"
 
